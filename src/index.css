@@ -1,0 +1,190 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Normalisation des boutons du header */
+.header-button {
+  @apply px-3 py-4 rounded transition text-sm;
+  height: 80px; /* Hauteur doublée pour éviter que le texte dépasse */
+  min-height: 80px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+/* Uniformiser les hauteurs des boutons dans le header */
+header button,
+.header-section button {
+  height: 80px !important;
+  min-height: 80px !important;
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+  font-size: 0.875rem !important;
+  line-height: 1.25rem !important;
+}
+
+/* Classes de thème pour l'éditeur CodeMirror */
+body[data-theme="dark"] .cm-editor {
+  background-color: #1f2937;
+  color: #f9fafb;
+}
+
+body[data-theme="light"] .cm-editor {
+  background-color: #ffffff;
+  color: #111827;
+}
+
+/* Animation du curseur CodeMirror */
+@keyframes cm-blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Sélection de texte CodeMirror */
+.cm-selectionBackground {
+  background-color: #0066cc !important;
+  opacity: 0.3 !important;
+}
+
+.cm-focused .cm-selectionBackground {
+  background-color: #0066cc !important;
+  opacity: 0.4 !important;
+}
+
+/* Forcer le curseur visible sur tous les éditeurs CodeMirror */
+.cm-editor {
+  position: relative;
+}
+
+.cm-editor.cm-focused .cm-cursor,
+.cm-focused .cm-cursor,
+.cm-content .cm-cursor,
+.cm-line .cm-cursor,
+.cm-cursor {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: absolute !important;
+  z-index: 999 !important;
+  background: transparent !important;
+  height: 1.2em !important;
+  width: 0 !important;
+  border-left: 2px solid #ffffff !important;
+  border-left-color: #ffffff !important;
+  animation: cm-blink 1.2s step-end infinite !important;
+}
+
+/* Animation visible du curseur */
+@keyframes cm-blink {
+  0%,
+  50% {
+    opacity: 1;
+    border-left-color: #ffffff;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Curseur en thème sombre - BLANC pour être visible */
+[data-theme="dark"] .cm-cursor,
+[data-theme="dark"] .cm-editor .cm-cursor,
+[data-theme="dark"] .cm-content .cm-cursor {
+  border-left: 2px solid #ffffff !important;
+  border-left-color: #ffffff !important;
+  animation: cm-blink-white 1.2s step-end infinite !important;
+}
+
+/* Curseur en thème clair - NOIR pour être visible */
+[data-theme="light"] .cm-cursor,
+[data-theme="light"] .cm-editor .cm-cursor,
+[data-theme="light"] .cm-content .cm-cursor {
+  border-left: 2px solid #000000 !important;
+  border-left-color: #000000 !important;
+  animation: cm-blink-black 1.2s step-end infinite !important;
+}
+
+/* Animations séparées pour chaque couleur */
+@keyframes cm-blink-white {
+  0%,
+  50% {
+    opacity: 1;
+    border-left-color: #ffffff !important;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes cm-blink-black {
+  0%,
+  50% {
+    opacity: 1;
+    border-left-color: #000000 !important;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Fallback absolu - au cas où */
+body [data-theme="dark"] .cm-cursor * {
+  border-left: 2px solid #ffffff !important;
+}
+
+body [data-theme="light"] .cm-cursor * {
+  border-left: 2px solid #000000 !important;
+}
+
+/* Styles pour la sélection CodeMirror */
+.cm-editor .cm-selectionBackground {
+  background-color: #0066cc !important;
+  opacity: 0.3 !important;
+}
+
+.cm-editor.cm-focused .cm-selectionBackground {
+  background-color: #0066cc !important;
+  opacity: 0.4 !important;
+}
+
+/* Styles de sélection natifs pour le contenu */
+.cm-content ::selection {
+  background-color: #0066cc !important;
+  opacity: 0.4 !important;
+}
+
+/* Désactiver la sélection native sur le conteneur */
+.cm-editor {
+  user-select: none;
+}
+
+/* Réactiver la sélection sur le contenu */
+.cm-content {
+  user-select: text !important;
+}
+
+/* Style pour les thèmes sombres */
+[data-theme="dark"] .cm-editor .cm-selectionBackground {
+  background-color: #4d9eff !important;
+  opacity: 0.3 !important;
+}
+
+[data-theme="dark"] .cm-editor.cm-focused .cm-selectionBackground {
+  background-color: #4d9eff !important;
+  opacity: 0.4 !important;
+}
+
+[data-theme="dark"] .cm-content ::selection {
+  background-color: #4d9eff !important;
+  opacity: 0.4 !important;
+}
