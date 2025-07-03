@@ -185,7 +185,7 @@ export default function Preview() {
             ref={iframeRef}
             className="w-full h-full border-0"
             title="Prévisualisation"
-            sandbox="allow-scripts"
+            sandbox="allow-scripts allow-same-origin"
             style={{
               maxWidth: isFullScreen ? "100%" : previewStyle.width,
               maxHeight: isFullScreen ? "100%" : previewStyle.height,
